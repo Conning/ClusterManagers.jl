@@ -23,8 +23,9 @@ type ElasticManager <: ClusterManager
 
         @schedule begin
             while true
-                s = accept(l_sock)
-                @schedule process_worker_conn(lman, s)
+                let s = accept(l_sock)
+                    @schedule process_worker_conn(lman, s)
+                end
             end
         end
 
